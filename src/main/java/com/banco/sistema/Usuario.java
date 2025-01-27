@@ -8,6 +8,18 @@ public class Usuario {
 
     // Constructor
     public Usuario(String nombre, String apellido, String correo, String contrasena) {
+        if (nombre == null || nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        }
+        if (apellido == null || apellido.isEmpty()) {
+            throw new IllegalArgumentException("El apellido no puede estar vacío");
+        }
+        if (correo == null || correo.isEmpty() || !correo.contains("@")) {
+            throw new IllegalArgumentException("El correo no es válido");
+        }
+        if (contrasena == null || contrasena.length() < 6) {
+            throw new IllegalArgumentException("La contraseña debe tener al menos 6 caracteres");
+        }
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
